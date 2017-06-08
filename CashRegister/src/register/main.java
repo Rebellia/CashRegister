@@ -12,7 +12,7 @@ public class main
 		registerPanel regPanel = new registerPanel();
 		
 		rFrame.add(regPanel);
-		rFrame.setSize(500, 500);
+		rFrame.setSize(700, 700);
 		rFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		rFrame.setVisible(true);
 	}

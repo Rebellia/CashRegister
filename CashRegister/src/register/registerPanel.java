@@ -9,12 +9,14 @@ public class registerPanel extends JPanel
 {
     //Instance variables 
     JButton Barrett, nonBarrett, mg, cash;
-	
+	JButton zero, one, two, three, four, five, six, seven, eight, nine;
+    
 	JLabel lunch, guests, result;
     
-	JPanel guestPanel, resultPanel;
+	JPanel guestPanel, keyPanel, resultPanel;
 	JPanel mealTypePan, buttonPanel1, buttonPanel2, buttonPanel3, buttonPanel4;//to hold the meal type buttons
 	
+	JTextArea tally;
     
     //Constructor
     public registerPanel()
@@ -53,13 +55,44 @@ public class registerPanel extends JPanel
 		guestPanel = new JPanel(new BorderLayout());
 		guests = new JLabel("Number of Guests", JLabel.CENTER);
 		guestPanel.add(guests, BorderLayout.NORTH);
+		
+		keyPanel = new JPanel(new GridLayout(4, 3));
+		JButton zero = new JButton("0");
+		JButton one = new JButton("1");
+		JButton two = new JButton("2");
+		JButton three = new JButton("3");
+		JButton four = new JButton("4");
+		JButton five = new JButton("5");
+		JButton six = new JButton("6");
+		JButton seven = new JButton("7");
+		JButton eight = new JButton("8");
+		JButton nine = new JButton("9");
+		
+		keyPanel.add(zero);
+		keyPanel.add(one);
+		keyPanel.add(two);
+		keyPanel.add(three);
+		keyPanel.add(four);
+		keyPanel.add(five);
+		keyPanel.add(six);
+		keyPanel.add(seven);
+		keyPanel.add(eight);
+		keyPanel.add(nine);
+		guestPanel.add(keyPanel, BorderLayout.CENTER);
+		
 		this.add(guestPanel, BorderLayout.CENTER);
+		
+
 		
 		
 		//Tally the total cost
-		resultPanel = new JPanel();
+		resultPanel = new JPanel(new BorderLayout());
 		result = new JLabel("Total", JLabel.CENTER);
-		resultPanel.add(result);
+		resultPanel.add(result, BorderLayout.NORTH);
+		
+		tally = new JTextArea(5,10);
+		resultPanel.add(tally, BorderLayout.CENTER);
+		
 		this.add(resultPanel, BorderLayout.EAST);
 		/*input1 = new JLabel("input 1:");
 		input2 = new JLabel("input 2:");
