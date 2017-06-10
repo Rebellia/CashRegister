@@ -11,7 +11,7 @@ import javax.swing.JTextField;
 
 //This will hold the password panel and the registerPanel
 
-public class passwordPanel extends JPanel{
+public class passwordPanel extends JPanel implements ActionListener{
 	//Instance variables
 	final String password = "hello";
 	
@@ -33,6 +33,7 @@ public class passwordPanel extends JPanel{
 		error = new JLabel("");
 		inputField = new JTextField();
 		submit = new JButton("Click");
+		submit.addActionListener(this);
 		
 		enterPan.setLayout(new GridLayout(4,1));
 		enterPan.add(request);
@@ -46,31 +47,28 @@ public class passwordPanel extends JPanel{
 		this.add(regPanel, "Register Panel");
 	}
 	
-	//buttonListener class for click
-	class PasswordListener implements ActionListener
+	//buttonListener method for click
+	public void actionPerformed(ActionEvent event)
 	{
-		public void actionPerformed(ActionEvent event)
+		CardLayout layout = (CardLayout)(this.getLayout());
+		JButton command = (JButton)event.getSource();
+		if (command == submit)
 		{
-			CardLayout layout = (CardLayout)(passwordPanel.getLayout());
-			JButton command = (JButton)event.getSource();
-			if (command == submit)
+			String input = inputField.getText();
+			if (input.equals(password))
 			{
-				String input = inputField.getText();
-				if (input.equals(password))
-				{
-					layout.show(passwordPanel, "Enter Panel");
-					inputField.setText("");
-					error.setText("");
-				}
-				else
-				{
-					error.setForeground(Color.red);
-					error.setText("INCORRECT PASSWORD");
-					inputField.setText("");
-				}
+				layout.show(this, "Register Panel");
+				inputField.setText("");
+				error.setText("");
+			}
+			else
+			{
+				error.setForeground(Color.red);
+				error.setText("INCORRECT PASSWORD");
+				inputField.setText("");
 			}
 		}
-	} //end of PasswordListener class
+	}
 	
-	submit.addActionListener(new PasswordListener());
+	//submit.addActionListener(this);
 }

@@ -7,28 +7,54 @@ import java.awt.event.*;
 
 public class registerPanel extends JPanel
 {
-    //Instance variables 
+    /**
+     * Class level instance variables
+     * */
     JButton Barrett, nonBarrett, mg, cash;
 	JButton zero, one, two, three, four, five, six, seven, eight, nine;
+    JButton logout;
     
 	JLabel lunch, guests, result;
     
-	JPanel LowerPanel, guestPanel, keyPanel, resultPanel;
+	JPanel UpperPanel, LowerPanel, guestPanel, keyPanel, resultPanel;
 	JPanel mealTypePan, buttonPanel1, buttonPanel2, buttonPanel3, buttonPanel4;//to hold the meal type buttons
 	
 	JTextArea tally;
     
-    //Constructor
+    /**
+     * Constructor
+     * */
     public registerPanel()
     {
-        //this.setLayout(new BorderLayout());//sets the layout of registerPanel
-    	this.setLayout(new GridLayout(2,0));
+    	this.setLayout(new GridLayout(2,0)); //Sets the layout of the registerPanel
         
+    	
+    	/**
+    	 * This part of the program sets up the upper panel
+    	 * Displays the meal time
+    	 * Gives the user the option to logout of the register
+    	 * */
         //Display mealtime
+    	//TODO -- Have the program calculate the meal time
         lunch = new JLabel("LUNCHTIME", JLabel.CENTER); //places text in center of label
-        //this.add(lunch, BorderLayout.NORTH);
-        this.add(lunch);
+ 
+        //TODO -- See if you can change the size of the button
+        logout = new JButton("logout");
         
+        
+        UpperPanel = new JPanel(new GridLayout(1,2));
+        UpperPanel.add(lunch);
+        UpperPanel.add(logout);
+        //this.add(lunch, BorderLayout.NORTH);
+        this.add(UpperPanel);
+        
+        
+        /**
+         * This part of the program sets up the lower panel
+         * Allows the user to select the customer type
+         * Allows the user to select the number of guests arriving with the customer
+         * Displays the total number of meals/guest passes used
+         * */
         LowerPanel = new JPanel(new GridLayout(1, 3));
         
         //Buttons to determine customer type
@@ -53,7 +79,6 @@ public class registerPanel extends JPanel
 		mealTypePan.add(buttonPanel3);
 		mealTypePan.add(buttonPanel4);
 		
-		//this.add(mealTypePan, BorderLayout.WEST);
 		LowerPanel.add(mealTypePan);
 		
 		//Determine Number of guests
@@ -85,12 +110,12 @@ public class registerPanel extends JPanel
 		keyPanel.add(nine);
 		guestPanel.add(keyPanel, BorderLayout.CENTER);
 		
-		//this.add(guestPanel, BorderLayout.CENTER);
 		LowerPanel.add(guestPanel);
 
 		
 		
 		//Tally the total cost
+		//TODO -- Get this to actually display something
 		resultPanel = new JPanel(new BorderLayout());
 		result = new JLabel("Total", JLabel.CENTER);
 		resultPanel.add(result, BorderLayout.NORTH);
