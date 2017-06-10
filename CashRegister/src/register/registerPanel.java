@@ -13,7 +13,7 @@ public class registerPanel extends JPanel
     
 	JLabel lunch, guests, result;
     
-	JPanel guestPanel, keyPanel, resultPanel;
+	JPanel LowerPanel, guestPanel, keyPanel, resultPanel;
 	JPanel mealTypePan, buttonPanel1, buttonPanel2, buttonPanel3, buttonPanel4;//to hold the meal type buttons
 	
 	JTextArea tally;
@@ -21,11 +21,15 @@ public class registerPanel extends JPanel
     //Constructor
     public registerPanel()
     {
-        this.setLayout(new BorderLayout());//sets the layout of registerPanel
+        //this.setLayout(new BorderLayout());//sets the layout of registerPanel
+    	this.setLayout(new GridLayout(2,0));
         
         //Display mealtime
         lunch = new JLabel("LUNCHTIME", JLabel.CENTER); //places text in center of label
-        this.add(lunch, BorderLayout.NORTH);
+        //this.add(lunch, BorderLayout.NORTH);
+        this.add(lunch);
+        
+        LowerPanel = new JPanel(new GridLayout(1, 3));
         
         //Buttons to determine customer type
         mealTypePan = new JPanel(new GridLayout(4, 1));
@@ -49,7 +53,8 @@ public class registerPanel extends JPanel
 		mealTypePan.add(buttonPanel3);
 		mealTypePan.add(buttonPanel4);
 		
-		this.add(mealTypePan, BorderLayout.WEST);
+		//this.add(mealTypePan, BorderLayout.WEST);
+		LowerPanel.add(mealTypePan);
 		
 		//Determine Number of guests
 		guestPanel = new JPanel(new BorderLayout());
@@ -80,8 +85,8 @@ public class registerPanel extends JPanel
 		keyPanel.add(nine);
 		guestPanel.add(keyPanel, BorderLayout.CENTER);
 		
-		this.add(guestPanel, BorderLayout.CENTER);
-		
+		//this.add(guestPanel, BorderLayout.CENTER);
+		LowerPanel.add(guestPanel);
 
 		
 		
@@ -93,53 +98,11 @@ public class registerPanel extends JPanel
 		tally = new JTextArea(5,10);
 		resultPanel.add(tally, BorderLayout.CENTER);
 		
-		this.add(resultPanel, BorderLayout.EAST);
-		/*input1 = new JLabel("input 1:");
-		input2 = new JLabel("input 2:");
-		result = new JLabel("result:");
+		//this.add(resultPanel, BorderLayout.EAST);
 		
+		LowerPanel.add(resultPanel);
 		
-		inField1 = new JTextField(10);
-		inField2 = new JTextField(10);
-		resultField = new JTextField(10);
-		
-		//ActionListeners
-		Barrett.addActionListener(new ButtonListener());
-		nonBarrett.addActionListener(new ButtonListener());
-		mg.addActionListener(new ButtonListener());
-		cash.addActionListener(new ButtonListener());
-		
-		//Button Panels
-		buttonPanel1 = new JPanel(new GridLayout(1,1));
-		buttonPanel2 = new JPanel(new GridLayout(1,1));
-		buttonPanel3 = new JPanel(new GridLayout(1,1));
-		buttonPanel4 = new JPanel(new GridLayout(1,1));
-		
-		
-		
-		//Add to panel
-		
-		//Button Panel
-		buttonPanel1.add(Barrett);
-		buttonPanel2.add(nonBarrett);
-		buttonPanel3.add(mg);
-		buttonPanel4.add(cash);
-		
-		//Row 1 -- input1
-		this.add(buttonPanel1);
-		this.add(inField1);
-		
-		//Row 2 -- input2
-		this.add(buttonPanel2);
-		this.add(inField2);
-		
-		//Row 3 -- buttons
-		this.add(buttonPanel3);
-		this.add(result);
-		
-		//Row 4 -- result
-		this.add(buttonPanel4);
-		this.add(resultField);*/
+		this.add(LowerPanel);
 		
     }
     
